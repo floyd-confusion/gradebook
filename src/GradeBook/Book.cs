@@ -16,19 +16,21 @@ namespace GradeBook
         {
             grades.Add(grade);
         }
-        //initialisation
-
+        
+        //method below calculates average, highest and lowest grade
         public Statistics GetStatistics () 
         {
+            //creating new object of type "Statistics"
             var result = new Statistics();
+            //setting it's fields to default values
             result.Average = 0.0;
-            result.High = double.MinValue;
-            result.Low = double.MaxValue;
+            result.High = 0;
+            result.Low = 100; //here can be anything higher than max grade
 
             foreach (var grade in grades)
             {
-                result.Low = Math.Min(grade, result.Low);
-                result.High = Math.Max(grade, result.High);
+                result.Low = Math.Min(result.Low, grade);
+                result.High = Math.Max(result.High, grade);
                 result.Average += grade;
             }
             result.Average /= grades.Count;
