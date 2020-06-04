@@ -10,14 +10,9 @@ namespace Gradebook.Tests
         public void CanSetNameFromReference ()
         {
             var book1 = GetBook("Book1");
-            SetName(book1, "Book2");
+            book1.SetName(book1, "Book2");
 
-            Assert.Equal(book1.Name, "Book2");
-        }
-
-        private void SetName(Book book, string name)
-        {
-            book.Name = name;
+            Assert.Equal("Book2", book1.Name);
         }
 
         [Fact]

@@ -38,6 +38,12 @@ namespace GradeBook
             return result;
         }
 
+        public void SetName(Book book, string name)
+        {
+            Name = name;
+        }
+
+
         List<double> grades;
         public string Name;
     }
