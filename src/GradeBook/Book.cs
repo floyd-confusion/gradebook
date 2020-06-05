@@ -38,6 +38,13 @@ namespace GradeBook
             return result;
         }
 
+        public Book cloneBook(Book book, string name)
+        {
+            book.Name = name;
+            return book;
+
+        }
+
         public void SetName(Book book, string name)
         {
             Name = name;
