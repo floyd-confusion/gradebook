@@ -26,6 +26,14 @@ namespace Gradebook.Tests
            Assert.Equal ("Book 2", book2.Name);
         }
 
+        [Fact]
+        public void CloneBookReturnsNewBook()
+        {
+            var book1 = GetBook("Book1");
+            var book2 = book1.cloneBook(book1, "Cloned");
+            Assert.Same(book1, book2);
+        }
+
         Book GetBook(string name)
         {
             return new Book(name);
