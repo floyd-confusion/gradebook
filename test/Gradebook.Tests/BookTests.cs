@@ -6,6 +6,8 @@ namespace Gradebook.Tests
 {
     public class BookTests
     {
+        // Add a test when no Grade added
+        
         [Fact]
         public void BookCalculatesStats()
         {
