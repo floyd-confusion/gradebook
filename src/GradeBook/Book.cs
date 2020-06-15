@@ -11,7 +11,7 @@ namespace GradeBook
         public Book (string name)
         {
             grades = new List<double>(); // better to make this initialization along with declaration
-            Name = name;
+            this.Name = name;
         }
         
         public void AddGrade (double grade)
@@ -21,22 +21,13 @@ namespace GradeBook
         
         //method below calculates average, highest and lowest grade
         public Statistics GetStatistics () 
-        {
-            //creating new object of type "Statistics"
-            var result = new Statistics();
-            //setting it's fields to default values
-            result.Average = 0.0;
-            result.High = 0;
-            result.Low = 100; //here can be anything higher than max grade // VZ: try not to use "magic" numbers even if it is described in a comment. Use constants
-            
-            // VZ: you can use field initialization on constraction. It is just syntax sugar but it makes code more readable
-            
-            var r = new Statistics()
+        {            
+            var result = new Statistics()
             {
                 Average = 0.0,
                 High = 0,
                 Low = double.MaxValue // more reliable and more readable
-            }
+            };
 
             foreach (var grade in grades)
             {
@@ -49,8 +40,18 @@ namespace GradeBook
             return result;
         }
 
+        public bool IsEmpty()
+        {
+            if (this.grades.Count < 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         // better to follow the same code style. All other method names are started from capitalixed letter. So, use CloneBook
-        public Book cloneBook(Book book, string name)
+        public Book CloneBook(Book book, string name)
         {
             book.Name = name;  // Clone means to create a new book (instance of a class)
             return book;
@@ -58,14 +59,13 @@ namespace GradeBook
         
         public Book CloneBook()
         {
-             return new Book()
-             {
-                 Name = this.Name,
-                 Grades = this.Grades.ToList() // please, focus atention. I do a 'deep' copy of a grades
-             };
+            return new Book(this.Name)
+            {
+                grades = this.grades.ToList() // please, focus atention. I do a 'deep' copy of a grades
+            };
         }
 
-        public void SetName(Book book, string name)
+        public void SetName(string name)
         {
             // input parameter 'book' is not used
             
@@ -75,7 +75,8 @@ namespace GradeBook
         private List<double> grades;  // you can initialize in here : private List<double> grades = new List<double>();
         
         // VZ: better to use properties. See https://csharpindepth.com/articles/PropertiesMatter for more information
-        public string Name {get; set;} // // or {get; private set;}
+
+        public string Name {get; set;} // or {get; private set;}
     }
 
 }

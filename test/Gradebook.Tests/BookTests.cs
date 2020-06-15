@@ -7,7 +7,18 @@ namespace Gradebook.Tests
     public class BookTests
     {
         // Add a test when no Grade added
-        
+        [Fact]
+        public void NoGrades()
+        {
+            //Given
+            var book = new Book("Book");
+            //When
+            book.AddGrade(15.0);
+            //Then
+            Assert.True(book.IsEmpty());
+        }
+
+
         [Fact]
         public void BookCalculatesStats()
         {

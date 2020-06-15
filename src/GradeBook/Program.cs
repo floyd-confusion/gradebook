@@ -13,7 +13,7 @@ namespace GradeBook
             book.AddGrade(7);
             book.AddGrade(9);
 
-            var clonedBook = book.cloneBook(book, "clonedBook");
+            var clonedBook = book.CloneBook(book, "clonedBook");
             book.AddGrade(10);
             book.AddGrade(11);
             book.AddGrade(6);
@@ -29,8 +29,6 @@ namespace GradeBook
             Console.WriteLine($"The highest is {stats2.High}");
             Console.WriteLine($"The lowest is {stats2.Low}");
             Console.WriteLine($"The average is {stats2.Average:N1}");
-            
-
 
         }
 
